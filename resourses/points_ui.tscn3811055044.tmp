@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bubv5jabkalf5"]
+
+[ext_resource type="Texture2D" uid="uid://71oy3hm7sgsl" path="res://assets/ui/points/brush_damage1.png" id="1_ie5en"]
+[ext_resource type="Script" uid="uid://bv4whi78g3cuh" path="res://scripts/points_ui.gd" id="1_x1btf"]
+
+[node name="Control" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -964.0
+offset_bottom = -470.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x1btf")
+
+[node name="PointsCounterUnit" type="Sprite2D" parent="."]
+position = Vector2(130, 87)
+scale = Vector2(0.74, 1)
+texture = ExtResource("1_ie5en")
+hframes = 10
+vframes = 5
+frame = 20
+
+[node name="PointsCounterTens" type="Sprite2D" parent="."]
+position = Vector2(57, 87)
+scale = Vector2(0.74, 1)
+texture = ExtResource("1_ie5en")
+hframes = 10
+vframes = 5
+frame = 20
