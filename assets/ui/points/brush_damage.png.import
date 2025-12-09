@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bakgj6p6re6hw"
-path="res://.godot/imported/brush_damage1 (1).png-b2ba13bc526ddabe5e321477fa7813de.ctex"
+uid="uid://dua5u453jxfk8"
+path="res://.godot/imported/brush_damage.png-32a086e96a219587db79403032f1cc96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/points/brush_damage1 (1).png"
-dest_files=["res://.godot/imported/brush_damage1 (1).png-b2ba13bc526ddabe5e321477fa7813de.ctex"]
+source_file="res://assets/ui/points/brush_damage.png"
+dest_files=["res://.godot/imported/brush_damage.png-32a086e96a219587db79403032f1cc96.ctex"]
 
 [params]
 

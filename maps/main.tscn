@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://cxjj6e0i5ilqw"]
+[gd_scene load_steps=9 format=4 uid="uid://cxjj6e0i5ilqw"]
 
 [ext_resource type="Script" uid="uid://cg8f6sr3dgsb3" path="res://scripts/main.gd" id="1_72qrf"]
 [ext_resource type="Texture2D" uid="uid://c2jv6vqvwrt3f" path="res://assets/tile_sets/Free_32x32_tileset_wood.png" id="2_oduwx"]
 [ext_resource type="PackedScene" uid="uid://dwe24totuudip" path="res://resourses/fruit.tscn" id="3_mg60w"]
 [ext_resource type="PackedScene" uid="uid://bjertm2f1afbq" path="res://resourses/player.tscn" id="4_3oufs"]
 [ext_resource type="PackedScene" uid="uid://bubv5jabkalf5" path="res://resourses/points_ui.tscn" id="5_oduwx"]
+[ext_resource type="PackedScene" uid="uid://cs6rna5onrvrd" path="res://resourses/life_points.tscn" id="6_mg60w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8uhc"]
 texture = ExtResource("2_oduwx")
@@ -81,6 +82,13 @@ offset_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.5, 0.5)
+
+[node name="LifePoints" parent="." instance=ExtResource("6_mg60w")]
+offset_left = 490.0
+offset_top = 1.0
+offset_right = 676.0
+offset_bottom = 177.0
+scale = Vector2(0.45, 0.45)
 
 [connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,11 +1,12 @@
 extends Node
-@onready var player: Area2D = $"."
 
+@onready var player: Area2D = $"."
 @onready var animation: AnimatedSprite2D = $PlayerSlice
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
-
 @onready var points: int = 0
+
+@export var player_hp: int = 3 
 
 signal player_points
 
