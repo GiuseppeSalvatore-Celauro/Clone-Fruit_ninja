@@ -168,6 +168,7 @@ frame_progress = 0.621318
 offset = Vector2(10, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("SegmentShape2D_whqyu")
 
 [node name="Timer" type="Timer" parent="."]

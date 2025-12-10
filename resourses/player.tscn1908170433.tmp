@@ -151,8 +151,8 @@ animations = [{
 "speed": 60.0
 }]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_whqyu"]
-b = Vector2(0, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whqyu"]
+size = Vector2(33, 13)
 
 [node name="Player" type="Area2D"]
 top_level = true
@@ -168,13 +168,15 @@ frame_progress = 0.621318
 offset = Vector2(10, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("SegmentShape2D_whqyu")
+position = Vector2(-3.5, 0.5)
+shape = SubResource("RectangleShape2D_whqyu")
+disabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 
 [node name="slicing_line" type="Line2D" parent="."]
-visible = false
+points = PackedVector2Array(0, 0, 0, 0)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

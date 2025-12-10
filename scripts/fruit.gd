@@ -13,7 +13,7 @@ signal emit_fruit_dmg
 
 @export var fruit_dmg = 1
 @export var min_falling_speed = 400
-@export var max_falling_speed = 1000
+@export var max_falling_speed = 800
 
 func _process(delta: float) -> void:
 	var _rotation = fruit_rotation(delta)
