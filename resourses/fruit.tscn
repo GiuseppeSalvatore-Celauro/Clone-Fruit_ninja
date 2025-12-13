@@ -9,19 +9,21 @@ radius = 17.0
 [node name="Fruit" type="Area2D"]
 script = ExtResource("1_oocop")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="LeftSide" type="Sprite2D" parent="."]
+position = Vector2(-7, 1)
+scale = Vector2(0.96875, 1.03125)
 texture = ExtResource("1_aepbf")
-hframes = 6
-vframes = 6
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 32)
+
+[node name="RightSide" type="Sprite2D" parent="."]
+position = Vector2(8, 1)
+texture = ExtResource("1_aepbf")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_aepbf")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_aepbf")
-hframes = 6
-vframes = 6
-frame = 18
+shape = SubResource("CircleShape2D_aepbf")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

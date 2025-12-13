@@ -5,7 +5,7 @@ extends Panel
 @onready var points_counter_tens: Sprite2D = $PointsCounterTens
 @onready var root: Node2D = $".."
 
-@export var tens_counter = 0
+@export var tens_counter:int = 0
 
 func _ready() -> void:
 	root.connect("emit_player_points_to_ui", change_point_shape)
