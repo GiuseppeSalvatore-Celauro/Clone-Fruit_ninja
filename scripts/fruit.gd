@@ -16,16 +16,31 @@ signal emit_fruit_dmg
 @export var max_falling_speed: int = 500
 
 var random_rotation: int = randi_range(0, 1)
+var is_hitted: bool = false
+@onready var random_postion_after_cut: int = randi_range(45, 105)
 
 func _process(delta: float) -> void:
-	fruit_rotation(delta)
+	fruit_rotation(delta, fruit)
 	fruit_movement()
-
-func fruit_rotation(delta):
+	
+	if is_hitted:
+		fruit.rotation = 0
+		if random_rotation == 1:
+			fruit_rotation(delta, right_side)
+			fruit_rotation(-delta, left_side)
+			left_side.position.x -= delta * random_postion_after_cut
+			right_side.position.x += delta * random_postion_after_cut
+		else:
+			fruit_rotation(-delta, right_side)
+			fruit_rotation(delta, left_side)
+			left_side.position.x -= delta * random_postion_after_cut
+			right_side.position.x += delta * random_postion_after_cut
+		
+func fruit_rotation(delta: float, item):
 	if random_rotation == 1:
-		fruit.rotate(delta * 2)
+		item.rotate(delta * 2)
 	else:
-		fruit.rotate(delta * -2)
+		item.rotate(delta * -2)
 
 func fruit_movement():
 	var viewport_y = (get_viewport().size.y / 2) + 10
@@ -34,8 +49,8 @@ func fruit_movement():
 	else:
 		emit_signal("emit_fruit_dmg", fruit_dmg)
 		queue_free()
-
-
+		
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "Player":
-		fruit.queue_free()
+		fruit_dmg = 0
+		is_hitted = true
