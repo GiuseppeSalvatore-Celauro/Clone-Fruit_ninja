@@ -15,7 +15,7 @@ signal emit_fruit_dmg
 @export var min_falling_speed: int = 400
 @export var max_falling_speed: int = 500
 
-var random_rotation: int = randi_range(0, 1)
+var random_rotation: int =  randi_range(0, 1)
 var is_hitted: bool = false
 @onready var random_postion_after_cut: int = randi_range(45, 105)
 
@@ -24,15 +24,26 @@ func _process(delta: float) -> void:
 	fruit_movement()
 	
 	if is_hitted:
-		fruit.rotation = 0
-		if random_rotation == 1:
+		if fruit.rotation != 0: 
+			if random_rotation == 0:
+				#funzioni che permetto di modificare sia la rotazione del singolo lato che la loro direzione dopo il taglio
+				right_side.rotate(delta * -1)
+				right_side.position.x += speed_multiplayer / 1.7
+				
+				left_side.rotate(delta)
+				left_side.position.x -= speed_multiplayer / 1.7
+	
+			elif random_rotation == 1:
+				right_side.rotate(delta * -1)
+				right_side.position.x += speed_multiplayer / 1.7
+			
+				left_side.rotate(delta)
+				left_side.position.x -= speed_multiplayer / 2.5
+				
+		else:
+			# nel puro caro che la rotazione è 0 allora la tratta come basica
 			fruit_rotation(delta, right_side)
 			fruit_rotation(-delta, left_side)
-			left_side.position.x -= delta * random_postion_after_cut
-			right_side.position.x += delta * random_postion_after_cut
-		else:
-			fruit_rotation(-delta, right_side)
-			fruit_rotation(delta, left_side)
 			left_side.position.x -= delta * random_postion_after_cut
 			right_side.position.x += delta * random_postion_after_cut
 		
