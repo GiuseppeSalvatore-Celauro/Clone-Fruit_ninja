@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="Fruit ninja"
-run/main_scene="uid://cxjj6e0i5ilqw"
+run/main_scene="uid://dorfpkhbdpjqi"
 config/features=PackedStringArray("4.5", "Forward Plus")
+
+[audio]
+
+buses/default_bus_layout=""
 
 [display]
 

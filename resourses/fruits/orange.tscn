@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://baura34sx44vx"]
+
+[ext_resource type="PackedScene" uid="uid://dwe24totuudip" path="res://resourses/fruit.tscn" id="1_uu7mx"]
+[ext_resource type="Texture2D" uid="uid://by1bs8ub5vt1v" path="res://assets/fruits/fruits.png" id="2_qik73"]
+
+[node name="Fruit" instance=ExtResource("1_uu7mx")]
+
+[node name="LeftSide" parent="." index="0"]
+texture = ExtResource("2_qik73")
+region_enabled = true
+
+[node name="RightSide" parent="." index="1"]
+texture = ExtResource("2_qik73")
+region_enabled = true

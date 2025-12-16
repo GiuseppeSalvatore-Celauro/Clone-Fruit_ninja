@@ -3,14 +3,15 @@ extends Node2D
 @onready var player: Area2D = $"."
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
-@onready var points: int = 0
-@onready var starting_mouse_position: Vector2 = Vector2()
 @onready var slicing_line: Line2D = $slicing_line
+@onready var starting_mouse_position: Vector2 = Vector2()
 
 @export var player_hp: int = 999
 
 var start_point : Vector2
+var points: int = 0
 var max_amount_of_point: int = 8
+var is_sound_plaing:bool = false
 
 signal player_points
 

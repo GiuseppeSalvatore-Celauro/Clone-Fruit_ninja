@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwe24totuudip"]
 
-[ext_resource type="Texture2D" uid="uid://by1bs8ub5vt1v" path="res://assets/fruits/fruits.png" id="1_aepbf"]
 [ext_resource type="Script" uid="uid://crljg43j6whd5" path="res://scripts/fruit.gd" id="1_oocop"]
+[ext_resource type="AudioStream" uid="uid://b1467rl2ts8n2" path="res://assets/sfx/fruit_slicing.wav" id="2_oocop"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aepbf"]
 radius = 17.0
@@ -12,13 +12,11 @@ script = ExtResource("1_oocop")
 [node name="LeftSide" type="Sprite2D" parent="."]
 position = Vector2(-7, 1)
 scale = Vector2(0.96875, 1.03125)
-texture = ExtResource("1_aepbf")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 32)
 
 [node name="RightSide" type="Sprite2D" parent="."]
 position = Vector2(8, 1)
-texture = ExtResource("1_aepbf")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 32)
 
@@ -26,4 +24,9 @@ region_rect = Rect2(16, 0, 16, 32)
 visible = false
 shape = SubResource("CircleShape2D_aepbf")
 
+[node name="fruit_slicing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_oocop")
+volume_db = -10.0
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="finished" from="fruit_slicing" to="." method="_on_fruit_slicing_finished"]

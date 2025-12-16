@@ -7,12 +7,14 @@ signal emit_player_hp_to_ui
 @onready var min_range_value: int = 10
 @onready var player: Area2D = $Player
 @onready var points_ui: Panel = $points_ui
+@onready var main_music: AudioStreamPlayer2D = $MainMusic
 
 
-@export var fruit_scenes: PackedScene
+@export var fruit_scenes: Array[PackedScene]
 
 
 func _ready():
+	main_music.play()
 	timer.start()
 	player.connect("player_points", recive_player_points)
 
@@ -23,7 +25,7 @@ func random() -> float:
 
 func _on_timer_timeout() -> void:
 	var x_position: float = random() / 2
-	var new_fruit: Node = fruit_scenes.instantiate()
+	var new_fruit: Node = fruit_scenes.pick_random().instantiate()
 	new_fruit.position.x = x_position 
 	new_fruit.position.y = 0
 	add_child(new_fruit)
@@ -38,3 +40,7 @@ func recive_fruit_dmg(dmg: int) ->void:
 	if player.player_hp == 0:
 		get_tree().paused = true
 	emit_signal("emit_player_hp_to_ui", dmg)
+
+
+func _on_main_music_finished() -> void:
+	main_music.play()

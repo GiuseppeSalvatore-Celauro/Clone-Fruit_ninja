@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs6rna5onrvrd"]
+[gd_scene load_steps=5 format=3 uid="uid://cs6rna5onrvrd"]
 
 [ext_resource type="Script" uid="uid://vypge70fcnh0" path="res://scripts/life_points.gd" id="1_ks3p2"]
 [ext_resource type="Texture2D" uid="uid://dua5u453jxfk8" path="res://assets/ui/points/brush_damage.png" id="1_w4rpa"]
+[ext_resource type="AudioStream" uid="uid://bf4qjiokv26wx" path="res://assets/sfx/whip.wav" id="3_tx277"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ks3p2"]
 
@@ -18,3 +19,6 @@ texture = ExtResource("1_w4rpa")
 hframes = 10
 vframes = 5
 frame = 23
+
+[node name="dmg_taken" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_tx277")
