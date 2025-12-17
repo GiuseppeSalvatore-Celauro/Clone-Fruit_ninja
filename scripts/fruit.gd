@@ -4,14 +4,18 @@ class_name Fruit
 signal emit_fruit_dmg
 
 @onready var fruit: Fruit = $"."
-@onready var left_side: Sprite2D = $LeftSide
+@onready var container: CanvasGroup = $Container
+@onready var left_side: Sprite2D = $Container/LeftSide
+@onready var right_side: Sprite2D = $Container/RightSide
 @onready var full_fruit_collision: CollisionShape2D = $CollisionShape2D
-@onready var right_side: Sprite2D = $RightSide
 @onready var speed_multiplayer:int  = 1
 @onready var full_rotation:int  = 360
 @onready var gravity:int  = randi_range(min_falling_speed, max_falling_speed)
-@onready var fruit_slicing: AudioStreamPlayer2D = $fruit_slicing
-@onready var timer: Timer = $Timer
+@onready var fruit_slicing: AudioStreamPlayer2D = $FruitSlice
+@onready var fruit_explosion: CPUParticles2D = $FruitExplosion
+@onready var fruit_drip: CPUParticles2D = $FruitDrip
+
+
 @export var fruit_dmg: int = 1
 @export var min_falling_speed: int = 400
 @export var max_falling_speed: int = 500
@@ -23,7 +27,7 @@ var is_hitted: bool = false
 
 
 func _process(delta: float) -> void:
-	fruit_rotation(delta, fruit)
+	fruit_rotation(delta, container)
 	
 	if fruit.position.y < viewport_y:
 		fruit.position.y += speed_multiplayer * gravity / 100.00
@@ -64,6 +68,9 @@ func fruit_rotation(delta: float, item):
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "Player":
 		fruit_slicing.play()
+		fruit_explosion.emitting = true
+		fruit_drip.position = area.position
+		fruit_drip.emitting = true
 		fruit_dmg = 0
 		is_hitted = true
 

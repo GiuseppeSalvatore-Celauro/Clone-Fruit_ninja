@@ -1,21 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwe24totuudip"]
+[gd_scene load_steps=6 format=3 uid="uid://dwe24totuudip"]
 
 [ext_resource type="Script" uid="uid://crljg43j6whd5" path="res://scripts/fruit.gd" id="1_oocop"]
 [ext_resource type="AudioStream" uid="uid://b1467rl2ts8n2" path="res://assets/sfx/fruit_slicing.wav" id="2_oocop"]
+[ext_resource type="Texture2D" uid="uid://tumeyn8ixbqo" path="res://assets/misc/cerchio.png" id="3_itegv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aepbf"]
 radius = 17.0
 
+[sub_resource type="Curve" id="Curve_oocop"]
+_data = [Vector2(0.16455695, 1), 0.0, 0.0, 0, 0, Vector2(0.83966243, 0.6966293), -1.8435609, -1.8435609, 0, 0, Vector2(0.9915612, 0.28089893), -0.2754746, 0.0, 0, 0]
+point_count = 3
+
 [node name="Fruit" type="Area2D"]
 script = ExtResource("1_oocop")
 
-[node name="LeftSide" type="Sprite2D" parent="."]
+[node name="Container" type="CanvasGroup" parent="."]
+
+[node name="LeftSide" type="Sprite2D" parent="Container"]
 position = Vector2(-7, 1)
 scale = Vector2(0.96875, 1.03125)
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 32)
 
-[node name="RightSide" type="Sprite2D" parent="."]
+[node name="RightSide" type="Sprite2D" parent="Container"]
 position = Vector2(8, 1)
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 32)
@@ -24,9 +31,37 @@ region_rect = Rect2(16, 0, 16, 32)
 visible = false
 shape = SubResource("CircleShape2D_aepbf")
 
-[node name="fruit_slicing" type="AudioStreamPlayer2D" parent="."]
+[node name="FruitSlice" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_oocop")
 volume_db = -10.0
 
+[node name="FruitExplosion" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("3_itegv")
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.7
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 69.77
+initial_velocity_max = 186.05
+angular_velocity_min = -189.77
+angular_velocity_max = 680.93
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_oocop")
+
+[node name="FruitDrip" type="CPUParticles2D" parent="."]
+position = Vector2(0, 84)
+emitting = false
+texture = ExtResource("3_itegv")
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector2(0, 2000)
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_oocop")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="finished" from="fruit_slicing" to="." method="_on_fruit_slicing_finished"]
+[connection signal="finished" from="FruitSlice" to="." method="_on_fruit_slicing_finished"]

@@ -5,10 +5,16 @@
 
 [node name="Fruit" instance=ExtResource("1_fphmj")]
 
-[node name="LeftSide" parent="." index="0"]
+[node name="LeftSide" parent="Container" index="0"]
 texture = ExtResource("2_y5e64")
 region_rect = Rect2(96, 0, 16, 32)
 
-[node name="RightSide" parent="." index="1"]
+[node name="RightSide" parent="Container" index="1"]
 texture = ExtResource("2_y5e64")
 region_rect = Rect2(112, 0, 16, 32)
+
+[node name="FruitExplosion" parent="." index="3"]
+color = Color(0.7366768, 1, 0.6229333, 1)
+
+[node name="FruitDrip" parent="." index="4"]
+color = Color(0.7372549, 1, 0.62352943, 1)
