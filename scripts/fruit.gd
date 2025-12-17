@@ -2,6 +2,7 @@ extends Node2D
 class_name Fruit
 
 signal emit_fruit_dmg
+signal emit_fruit_recive_hit
 
 @onready var fruit: Fruit = $"."
 @onready var container: CanvasGroup = $Container
@@ -12,13 +13,12 @@ signal emit_fruit_dmg
 @onready var full_rotation:int  = 360
 @onready var gravity:int  = randi_range(min_falling_speed, max_falling_speed)
 @onready var fruit_slicing: AudioStreamPlayer2D = $FruitSlice
-@onready var fruit_explosion: CPUParticles2D = $FruitExplosion
-@onready var fruit_drip: CPUParticles2D = $FruitDrip
 
 
 @export var fruit_dmg: int = 1
 @export var min_falling_speed: int = 400
 @export var max_falling_speed: int = 500
+@export var color: String = '#fff'
 
 var random_rotation: int =  randi_range(0, 1)
 var is_hitted: bool = false
@@ -39,18 +39,12 @@ func _process(delta: float) -> void:
 		if fruit.rotation != 0: 
 			if random_rotation == 0:
 				#funzioni che permetto di modificare sia la rotazione del singolo lato che la loro direzione dopo il taglio
-				right_side.rotate(delta * -1)
-				right_side.position.x += speed_multiplayer / 1.7
+				positive_side_fruit_handler(right_side, delta, 1.7)
+				negative_side_fruit_handler(left_side, delta, 1.7)
 				
-				left_side.rotate(delta)
-				left_side.position.x -= speed_multiplayer / 1.7
-	
 			elif random_rotation == 1:
-				right_side.rotate(delta * -1)
-				right_side.position.x += speed_multiplayer / 1.7
-			
-				left_side.rotate(delta)
-				left_side.position.x -= speed_multiplayer / 2.5
+				positive_side_fruit_handler(left_side, delta, 2.5)
+				negative_side_fruit_handler(right_side, delta, 1.7)
 				
 		else:
 			# nel puro caro che la rotazione è 0 allora la tratta come basica
@@ -58,6 +52,15 @@ func _process(delta: float) -> void:
 			fruit_rotation(-delta, left_side)
 			left_side.position.x -= delta * random_postion_after_cut
 			right_side.position.x += delta * random_postion_after_cut
+		
+		
+func positive_side_fruit_handler(fruit_side: Sprite2D, delta: float, i: float)-> void:
+	fruit_side.rotate(delta * -1)
+	fruit_side.position.x  += speed_multiplayer / i
+	
+func negative_side_fruit_handler(fruit_side: Sprite2D, delta: float, i: float)-> void:
+	fruit_side.rotate(delta)
+	fruit_side.position.x  -= speed_multiplayer / i
 		
 func fruit_rotation(delta: float, item):
 	if random_rotation == 1:
@@ -68,9 +71,7 @@ func fruit_rotation(delta: float, item):
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "Player":
 		fruit_slicing.play()
-		fruit_explosion.emitting = true
-		fruit_drip.position = area.position
-		fruit_drip.emitting = true
+		emit_signal('emit_fruit_recive_hit', color, fruit.position)
 		fruit_dmg = 0
 		is_hitted = true
 

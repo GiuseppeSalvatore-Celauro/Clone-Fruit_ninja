@@ -2,6 +2,7 @@ extends Node2D
 
 signal emit_player_points_to_ui
 signal emit_player_hp_to_ui
+signal emit_particels_input
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var timer: Timer = $Timer
 @onready var min_range_value: int = 10
@@ -9,8 +10,8 @@ signal emit_player_hp_to_ui
 @onready var points_ui: Panel = $points_ui
 @onready var main_music: AudioStreamPlayer2D = $MainMusic
 
-
 @export var fruit_scenes: Array[PackedScene]
+@export var fruit_particles: PackedScene
 
 
 func _ready():
@@ -24,13 +25,16 @@ func random() -> float:
 	return number
 
 func _on_timer_timeout() -> void:
+	var new_fruit: Fruit = fruit_scenes.pick_random().instantiate()
+	new_fruit_handler(new_fruit)
+	new_fruit.connect("emit_fruit_dmg", recive_fruit_dmg)
+	new_fruit.connect("emit_fruit_recive_hit", recive_fruit_recived_hit)
+	
+func new_fruit_handler(new_fruit: Fruit)->void:
 	var x_position: float = random() / 2
-	var new_fruit: Node = fruit_scenes.pick_random().instantiate()
 	new_fruit.position.x = x_position 
 	new_fruit.position.y = 0
 	add_child(new_fruit)
-	new_fruit.connect("emit_fruit_dmg", recive_fruit_dmg)
-	
 
 func recive_player_points(points: int) -> void:
 	emit_signal("emit_player_points_to_ui", points)
@@ -44,3 +48,8 @@ func recive_fruit_dmg(dmg: int) ->void:
 
 func _on_main_music_finished() -> void:
 	main_music.play()
+
+func recive_fruit_recived_hit(color: String, _position: Vector2)-> void:
+	var new_fruit_particles: FruitParticles = fruit_particles.instantiate()
+	add_child(new_fruit_particles)
+	emit_signal("emit_particels_input", color, _position)

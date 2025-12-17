@@ -9,7 +9,7 @@ extends Node2D
 @export var player_hp: int = 999
 
 var start_point : Vector2
-var points: int = 0
+var points: int = 90
 var max_amount_of_point: int = 8
 var is_sound_plaing:bool = false
 

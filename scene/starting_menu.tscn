@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dorfpkhbdpjqi"]
+[gd_scene load_steps=18 format=4 uid="uid://dorfpkhbdpjqi"]
 
 [ext_resource type="Texture2D" uid="uid://c2jv6vqvwrt3f" path="res://assets/tile_sets/Free_32x32_tileset_wood.png" id="1_5qt0t"]
 [ext_resource type="Script" uid="uid://bg1pqjx1j43pt" path="res://scripts/starting_menu.gd" id="1_khqu2"]
@@ -104,7 +104,7 @@ sources/1 = SubResource("TileSetAtlasSource_sw070")
 font = ExtResource("2_jk0hb")
 font_size = 100
 font_color = Color(0.078431375, 0.80784315, 0.4509804, 1)
-outline_size = 50
+outline_size = 40
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ftvou"]
@@ -120,6 +120,13 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_se47v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mrv3n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y24of"]
+font = ExtResource("2_jk0hb")
+font_size = 30
+font_color = Color(0.078431375, 0.80784315, 0.4509804, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
 [node name="StartingMenu" type="Control"]
 layout_mode = 3
@@ -184,6 +191,21 @@ text = "Quit
 
 [node name="BtnSounds" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ftvou")
+
+[node name="Points" type="Label" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 1144.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0.078431375, 0.80784315, 0.4509804, 1)
+theme_override_fonts/font = ExtResource("2_jk0hb")
+theme_override_font_sizes/font_size = 16
+text = "Punti totali:"
+label_settings = SubResource("LabelSettings_y24of")
+vertical_alignment = 1
+autowrap_trim_flags = 128
 
 [connection signal="pressed" from="StartBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="QuitBtn" to="." method="_on_quit_btn_pressed"]

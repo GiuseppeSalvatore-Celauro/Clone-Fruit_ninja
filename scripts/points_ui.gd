@@ -15,8 +15,10 @@ func change_point_shape(player_points: int) -> void:
 	if player_points % 10 == 0:
 		tens_counter += 1
 		
-	if tens_counter == 10: 
-		root.queue_free()
+	if player_points == 99: 
+		save_manager.data.score += int(player_points)
+		save_manager.save_game()
+		get_tree().change_scene_to_file('res://scene/starting_menu.tscn')
 	
 	points_counter_unit.frame_coords.x = player_points % 10
 	points_counter_tens.frame_coords.x = tens_counter

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://by1bs8ub5vt1v" path="res://assets/fruits/fruits.png" id="2_ia3lc"]
 
 [node name="Fruit" instance=ExtResource("1_lgryh")]
+color = "ff4939"
 
 [node name="LeftSide" parent="Container" index="0"]
 texture = ExtResource("2_ia3lc")
