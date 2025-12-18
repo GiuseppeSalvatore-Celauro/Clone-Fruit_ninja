@@ -20,6 +20,7 @@ signal emit_particels_input
 
 @onready var min_range_value: int = 10
 var new_fruit: Fruit
+var is_game_over: bool = false
 
 func _ready():
 	main_music.play()
@@ -72,15 +73,18 @@ func recive_player_points(points: int) -> void:
 
 func recive_fruit_dmg(dmg: int) ->void:
 	player_life -= dmg
-	if player_life == 0:
+	
+	if player_life <= 0:
+		is_game_over = true
 		stop_timer()
-		points_ui.visible = false
-		life_ui.visible = false
-		game_over.visible = true
+		new_fruit.call_deferred("queue_free")
+		set_game_over_gui()
+		
 	emit_signal("emit_player_hp_to_ui",	player_life)
 
 func _on_main_music_finished() -> void:
-	main_music.play()
+	if not is_game_over:
+		main_music.play()
 
 func recive_fruit_recived_hit(color: String, _position: Vector2)-> void:
 	if new_fruit: 
@@ -95,3 +99,16 @@ func stop_timer()-> void:
 
 func get_player_points() -> int:
 	return player_points
+
+func set_game_over_gui() -> void:
+	music_handler()
+	points_ui.visible = false
+	life_ui.visible = false
+	game_over.visible = true
+	
+func music_handler() -> void:
+	main_music.stop()
+	main_music.stream = preload("res://assets/music/piano_defeated.wav")
+	main_music.volume_db = -5
+	main_music.pitch_scale = 1.5
+	main_music.play()
