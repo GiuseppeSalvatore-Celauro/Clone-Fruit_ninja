@@ -3,12 +3,15 @@ extends Node2D
 signal emit_player_points_to_ui
 signal emit_player_hp_to_ui
 signal emit_particels_input
+
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var timer: Timer = $Timer
 @onready var player: Area2D = $Player
 @onready var points_ui: Panel = $PlayerPoints
+@onready var life_ui: Panel = $LifePoints
 @onready var main_music: AudioStreamPlayer2D = $MainMusic
 @onready var root: Node = $"."
+@onready var game_over: Panel = $GameOver
 
 @export var fruit_scenes: Array[PackedScene]
 @export var fruit_particles: PackedScene
@@ -70,17 +73,25 @@ func recive_player_points(points: int) -> void:
 func recive_fruit_dmg(dmg: int) ->void:
 	player_life -= dmg
 	if player_life == 0:
-		get_tree().paused = true
+		stop_timer()
+		points_ui.visible = false
+		life_ui.visible = false
+		game_over.visible = true
 	emit_signal("emit_player_hp_to_ui",	player_life)
 
 func _on_main_music_finished() -> void:
 	main_music.play()
 
 func recive_fruit_recived_hit(color: String, _position: Vector2)-> void:
-	var new_fruit_particles: FruitParticles = fruit_particles.instantiate()
-	add_child(new_fruit_particles)
-	emit_signal("emit_particels_input", color, _position)
+	if new_fruit: 
+		new_fruit = null
+		var new_fruit_particles: FruitParticles = fruit_particles.instantiate()
+		add_child(new_fruit_particles)
+		emit_signal("emit_particels_input", color, _position)
 	
 func stop_timer()-> void:
 	if is_instance_valid(timer):
 		timer.stop()
+
+func get_player_points() -> int:
+	return player_points

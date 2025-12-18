@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cxjj6e0i5ilqw"]
+[gd_scene load_steps=19 format=4 uid="uid://cxjj6e0i5ilqw"]
 
 [ext_resource type="Script" uid="uid://cg8f6sr3dgsb3" path="res://scripts/main.gd" id="1_72qrf"]
 [ext_resource type="Texture2D" uid="uid://c2jv6vqvwrt3f" path="res://assets/tile_sets/Free_32x32_tileset_wood.png" id="2_oduwx"]
@@ -7,13 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://bjertm2f1afbq" path="res://resourses/player.tscn" id="4_3oufs"]
 [ext_resource type="PackedScene" uid="uid://baura34sx44vx" path="res://resourses/fruits/orange.tscn" id="4_kppq5"]
 [ext_resource type="PackedScene" uid="uid://c5dqm20u08pnv" path="res://resourses/fruits/pear.tscn" id="5_masfp"]
-[ext_resource type="PackedScene" uid="uid://bubv5jabkalf5" path="res://resourses/points_ui.tscn" id="5_oduwx"]
-[ext_resource type="PackedScene" uid="uid://cs6rna5onrvrd" path="res://resourses/life_points.tscn" id="6_mg60w"]
+[ext_resource type="PackedScene" uid="uid://bubv5jabkalf5" path="res://resourses/ui/points_ui.tscn" id="5_oduwx"]
+[ext_resource type="PackedScene" uid="uid://cs6rna5onrvrd" path="res://resourses/ui/life_points.tscn" id="6_mg60w"]
 [ext_resource type="PackedScene" uid="uid://kamuu6n6gnn6" path="res://resourses/fruits/strawberry.tscn" id="6_uhsqs"]
 [ext_resource type="PackedScene" uid="uid://k846c87t4d2d" path="res://resourses/fruits/coconut.tscn" id="7_y6crx"]
 [ext_resource type="PackedScene" uid="uid://cks7mljflhc4j" path="res://resourses/fruit_particles.tscn" id="8_hybxs"]
 [ext_resource type="Texture2D" uid="uid://cfeqr36o8ire3" path="res://assets/tile_sets/wood_tileset.png" id="9_mswub"]
 [ext_resource type="AudioStream" uid="uid://j7a55sooefvr" path="res://assets/music/uccellini prototipo.wav" id="12_wscrc"]
+[ext_resource type="PackedScene" uid="uid://bo8uef5cih6p" path="res://resourses/ui/game_over.tscn" id="15_v2gmf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8uhc"]
 texture = ExtResource("2_oduwx")
@@ -113,8 +114,9 @@ sources/1 = SubResource("TileSetAtlasSource_hybxs")
 
 [node name="root" type="Node2D"]
 script = ExtResource("1_72qrf")
-fruit_scenes = Array[PackedScene]([ExtResource("2_qt0it"), ExtResource("3_ofrm6"), ExtResource("4_kppq5"), ExtResource("5_masfp"), ExtResource("6_uhsqs"), ExtResource("7_y6crx")])
+fruit_scenes = Array[PackedScene]([ExtResource("2_qt0it"), ExtResource("7_y6crx"), ExtResource("3_ofrm6"), ExtResource("4_kppq5"), ExtResource("5_masfp"), ExtResource("6_uhsqs")])
 fruit_particles = ExtResource("8_hybxs")
+player_life = 1
 player_points = 90
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -134,20 +136,27 @@ top_level = true
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_right = 2.0
+offset_bottom = 2.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.5, 0.5)
 
 [node name="LifePoints" parent="." instance=ExtResource("6_mg60w")]
-offset_left = 492.0
-offset_right = 678.0
+offset_left = 496.00003
+offset_top = 16.0
+offset_right = 620.44446
+offset_bottom = 16.0
 scale = Vector2(0.45, 0.45)
 
 [node name="MainMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_wscrc")
 pitch_scale = 0.73
+
+[node name="GameOver" parent="." instance=ExtResource("15_v2gmf")]
+visible = false
+z_index = 999
+scale = Vector2(0.5, 0.5)
 
 [connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

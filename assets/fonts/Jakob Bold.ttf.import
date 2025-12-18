@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ilx8vgt1m1ng"
-path="res://.godot/imported/Jakob Bold.ttf-5b5984da3f7fa2c80d0e5af2b35204db.fontdata"
+path="res://.godot/imported/Jakob Bold.ttf-2ee38bef0dced69692be15c63ff8ebd6.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/fonts/Jakob Bold.ttf"
-dest_files=["res://.godot/imported/Jakob Bold.ttf-5b5984da3f7fa2c80d0e5af2b35204db.fontdata"]
+source_file="res://assets/fonts/Jakob Bold.ttf"
+dest_files=["res://.godot/imported/Jakob Bold.ttf-2ee38bef0dced69692be15c63ff8ebd6.fontdata"]
 
 [params]
 

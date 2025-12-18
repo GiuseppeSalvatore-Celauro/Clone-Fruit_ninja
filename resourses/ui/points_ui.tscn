@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bubv5jabkalf5"]
 
 [ext_resource type="Script" uid="uid://bv4whi78g3cuh" path="res://scripts/points_ui.gd" id="1_x1btf"]
-[ext_resource type="FontFile" uid="uid://ilx8vgt1m1ng" path="res://assets/ui/fonts/Jakob Bold.ttf" id="3_ko708"]
+[ext_resource type="FontFile" uid="uid://ilx8vgt1m1ng" path="res://assets/fonts/Jakob Bold.ttf" id="3_ko708"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqbng"]
 font_size = 100

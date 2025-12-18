@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c2jv6vqvwrt3f" path="res://assets/tile_sets/Free_32x32_tileset_wood.png" id="1_5qt0t"]
 [ext_resource type="Script" uid="uid://bg1pqjx1j43pt" path="res://scripts/starting_menu.gd" id="1_khqu2"]
-[ext_resource type="FontFile" uid="uid://ilx8vgt1m1ng" path="res://assets/ui/fonts/Jakob Bold.ttf" id="2_jk0hb"]
+[ext_resource type="FontFile" uid="uid://ilx8vgt1m1ng" path="res://assets/fonts/Jakob Bold.ttf" id="2_jk0hb"]
 [ext_resource type="Texture2D" uid="uid://cfeqr36o8ire3" path="res://assets/tile_sets/wood_tileset.png" id="3_y24of"]
 [ext_resource type="AudioStream" uid="uid://b7jcjg3rv0yxg" path="res://assets/sfx/pop_1.wav" id="4_ftvou"]
 

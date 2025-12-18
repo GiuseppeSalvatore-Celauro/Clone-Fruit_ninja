@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vypge70fcnh0" path="res://scripts/life_points.gd" id="1_ks3p2"]
 [ext_resource type="AudioStream" uid="uid://bf4qjiokv26wx" path="res://assets/sfx/whip.wav" id="3_tx277"]
-[ext_resource type="FontFile" uid="uid://ilx8vgt1m1ng" path="res://assets/ui/fonts/Jakob Bold.ttf" id="4_4j6mq"]
+[ext_resource type="FontFile" uid="uid://ilx8vgt1m1ng" path="res://assets/fonts/Jakob Bold.ttf" id="4_4j6mq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ks3p2"]
 
