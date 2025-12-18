@@ -14,7 +14,6 @@ shape = SubResource("CircleShape2D_q0wta")
 disabled = true
 
 [node name="SlicingLine" type="Line2D" parent="."]
-points = PackedVector2Array(80, -13)
 width = 2.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

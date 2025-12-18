@@ -17,6 +17,3 @@ func particles_settings(node, color, _position)-> void:
 	node.color = color
 	node.global_position = _position
 	node.emitting = true
-
-func _on_fruit_sketch_finished() -> void:
-	queue_free()

@@ -1,6 +1,5 @@
 extends Panel
 
-@onready var life_points: Sprite2D = $LifePointsSprite
 @onready var root: Node2D = $".."
 @onready var dmg_taken: AudioStreamPlayer2D = $DmgTakenSound
 @onready var points_counter: Label = $PointsCounter

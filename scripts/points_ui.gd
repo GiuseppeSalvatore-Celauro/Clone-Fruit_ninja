@@ -11,7 +11,4 @@ func _ready() -> void:
 
 func change_point_shape(player_points: int) -> void:
 	points_counter.text = str(player_points)
-	if player_points == 99: 
-		save_manager.data.score += player_points
-		save_manager.save_game()
-		get_tree().change_scene_to_file('res://scene/starting_menu.tscn')
+	
