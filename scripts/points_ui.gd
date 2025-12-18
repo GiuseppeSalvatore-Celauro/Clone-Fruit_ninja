@@ -1,9 +1,8 @@
 extends Panel
 
 
-@onready var points_counter_unit: Sprite2D = $PointsCounterUnit
-@onready var points_counter_tens: Sprite2D = $PointsCounterTens
 @onready var root: Node2D = $".."
+@onready var points_counter: Label = $PointsCounter
 
 @export var tens_counter:int = 0
 
@@ -11,14 +10,8 @@ func _ready() -> void:
 	root.connect("emit_player_points_to_ui", change_point_shape)
 
 func change_point_shape(player_points: int) -> void:
-	
-	if player_points % 10 == 0:
-		tens_counter += 1
-		
+	points_counter.text = str(player_points)
 	if player_points == 99: 
-		save_manager.data.score += int(player_points)
+		save_manager.data.score += player_points
 		save_manager.save_game()
 		get_tree().change_scene_to_file('res://scene/starting_menu.tscn')
-	
-	points_counter_unit.frame_coords.x = player_points % 10
-	points_counter_tens.frame_coords.x = tens_counter

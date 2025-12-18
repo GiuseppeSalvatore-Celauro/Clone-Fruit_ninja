@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs6rna5onrvrd"]
+[gd_scene load_steps=6 format=3 uid="uid://cs6rna5onrvrd"]
 
 [ext_resource type="Script" uid="uid://vypge70fcnh0" path="res://scripts/life_points.gd" id="1_ks3p2"]
-[ext_resource type="Texture2D" uid="uid://dua5u453jxfk8" path="res://assets/ui/points/brush_damage.png" id="1_w4rpa"]
 [ext_resource type="AudioStream" uid="uid://bf4qjiokv26wx" path="res://assets/sfx/whip.wav" id="3_tx277"]
+[ext_resource type="FontFile" uid="uid://ilx8vgt1m1ng" path="res://assets/ui/fonts/Jakob Bold.ttf" id="4_4j6mq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ks3p2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ybcsw"]
+font_size = 100
+font_color = Color(0.9764706, 0, 0, 1)
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
 
 [node name="LifePoints" type="Panel"]
 top_level = true
@@ -13,12 +19,17 @@ offset_bottom = 176.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ks3p2")
 script = ExtResource("1_ks3p2")
 
-[node name="LifePointsSprite" type="Sprite2D" parent="."]
-position = Vector2(93, 87)
-texture = ExtResource("1_w4rpa")
-hframes = 10
-vframes = 5
-frame = 23
-
-[node name="dmg_taken" type="AudioStreamPlayer2D" parent="."]
+[node name="DmgTakenSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_tx277")
+
+[node name="PointsCounter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 178.0
+offset_bottom = 154.0
+theme_override_fonts/font = ExtResource("4_4j6mq")
+theme_override_font_sizes/font_size = 20
+text = "3"
+label_settings = SubResource("LabelSettings_ybcsw")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -140,10 +140,8 @@ grow_vertical = 1
 scale = Vector2(0.5, 0.5)
 
 [node name="LifePoints" parent="." instance=ExtResource("6_mg60w")]
-offset_left = 490.0
-offset_top = 1.0
-offset_right = 676.0
-offset_bottom = 177.0
+offset_left = 492.0
+offset_right = 678.0
 scale = Vector2(0.45, 0.45)
 
 [node name="MainMusic" type="AudioStreamPlayer2D" parent="."]
