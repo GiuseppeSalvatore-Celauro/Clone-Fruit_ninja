@@ -38,5 +38,5 @@ func _process(_delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if not old_fruit == area:
 		old_fruit = area
-		emit_signal("player_points", 1)
+		emit_signal("player_points", 1 + int(save_manager.data.upgrades["Points"]))
 	

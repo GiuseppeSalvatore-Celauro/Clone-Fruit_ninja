@@ -28,7 +28,7 @@ var viewport_y: int
 func _ready() -> void:
 	random_rotation =  randi_range(0, 1)
 	is_hitted = false
-	speed_multiplayer = 1
+	speed_multiplayer = 1 + int(save_manager.data.upgrades["Difficulty"] / 2)
 	full_rotation = 360
 	gravity = randi_range(min_falling_speed, max_falling_speed)
 	random_postion_after_cut = randi_range(45, 105)

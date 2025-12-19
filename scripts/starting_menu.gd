@@ -32,5 +32,3 @@ func _on_btn_sounds_finished() -> void:
 	if is_game_closed:
 		get_tree().quit()
 		return
-
-

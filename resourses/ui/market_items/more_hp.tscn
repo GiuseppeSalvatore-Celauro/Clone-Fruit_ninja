@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cui86rdrjjh1x" path="res://assets/ui/market_items/HeartsFrame1.png" id="2_dc1rg"]
 
 [node name="HpPanel" instance=ExtResource("1_7xqtd")]
+upgrade_value = 50
 
 [node name="ItemSprite" parent="TopSide/MainPanelSprite/BackGroundPanel/Panel/BackGroundPanelSprite/ItemPanel" index="0"]
 position = Vector2(11.265019, 11.756135)

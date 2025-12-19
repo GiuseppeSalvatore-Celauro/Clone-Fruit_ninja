@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://weqmmjikikqv" path="res://assets/ui/market_items/Emojis.png" id="2_v7lid"]
 
 [node name="DifficultyPanel" instance=ExtResource("1_v7lid")]
+upgrade_value = 100
 
 [node name="ItemSprite" parent="TopSide/MainPanelSprite/BackGroundPanel/Panel/BackGroundPanelSprite/ItemPanel" index="0"]
 position = Vector2(11.754817, 12.327562)

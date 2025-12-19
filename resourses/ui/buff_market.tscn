@@ -18,16 +18,12 @@ theme_override_constants/separation = 40
 
 [node name="DifficultyPanel" parent="." instance=ExtResource("1_iqgi8")]
 layout_mode = 2
-upgrade_value = 100
 
 [node name="HpPanel" parent="." instance=ExtResource("2_hnwpf")]
 layout_mode = 2
-upgrade_value = 100
 
 [node name="PointsPanel" parent="." instance=ExtResource("3_mh4u0")]
 layout_mode = 2
-upgrade_value = 100
 
 [node name="TimePanel" parent="." instance=ExtResource("4_owcg4")]
 layout_mode = 2
-upgrade_value = 100

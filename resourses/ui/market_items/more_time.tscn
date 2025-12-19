@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://btinlqcltahq3" path="res://assets/ui/market_items/Inverted hourglass1.png" id="2_mf48r"]
 
 [node name="TimePanel" instance=ExtResource("1_34gde")]
+upgrade_value = 30
 
 [node name="ItemSprite" parent="TopSide/MainPanelSprite/BackGroundPanel/Panel/BackGroundPanelSprite/ItemPanel" index="0"]
 scale = Vector2(0.4, 0.4)

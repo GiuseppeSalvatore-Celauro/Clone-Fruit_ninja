@@ -15,8 +15,8 @@ signal emit_particels_input
 
 @export var fruit_scenes: Array[PackedScene]
 @export var fruit_particles: PackedScene
-@export var player_life: int = 3
 @export var player_points: int = 0
+@export var player_life: int = 0 + int(save_manager.data.upgrades["Hp"])
 
 @onready var min_range_value: int = 10
 var new_fruit: Fruit
@@ -25,6 +25,10 @@ var is_game_over: bool = false
 func _ready():
 	main_music.play()
 	timer.start()
+	
+	if player_life == 0:
+		life_ui.visible = false
+	
 	player.connect("player_points", recive_player_points)
 
 func random() -> float:
@@ -74,7 +78,7 @@ func recive_player_points(points: int) -> void:
 func recive_fruit_dmg(dmg: int) ->void:
 	player_life -= dmg
 	
-	if player_life <= 0:
+	if player_life < 0:
 		is_game_over = true
 		stop_timer()
 		new_fruit.call_deferred("queue_free")
