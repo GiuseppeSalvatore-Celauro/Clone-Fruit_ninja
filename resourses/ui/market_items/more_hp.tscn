@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ru4d4cfgbtyv"]
+
+[ext_resource type="PackedScene" uid="uid://bgoaldsyhaabh" path="res://resourses/ui/market_items/main_panel.tscn" id="1_7xqtd"]
+[ext_resource type="Texture2D" uid="uid://cui86rdrjjh1x" path="res://assets/ui/market_items/HeartsFrame1.png" id="2_dc1rg"]
+
+[node name="HpPanel" instance=ExtResource("1_7xqtd")]
+
+[node name="ItemSprite" parent="TopSide/MainPanelSprite/BackGroundPanel/Panel/BackGroundPanelSprite/ItemPanel" index="0"]
+position = Vector2(11.265019, 11.756135)
+scale = Vector2(0.7326442, 0.7919011)
+texture = ExtResource("2_dc1rg")

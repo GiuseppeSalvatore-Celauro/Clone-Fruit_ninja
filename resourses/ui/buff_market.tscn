@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://xugjn0ouaajt"]
+
+[ext_resource type="PackedScene" uid="uid://bndnbty2sbqhl" path="res://resourses/ui/market_items/more_difficult.tscn" id="1_iqgi8"]
+[ext_resource type="PackedScene" uid="uid://ru4d4cfgbtyv" path="res://resourses/ui/market_items/more_hp.tscn" id="2_hnwpf"]
+[ext_resource type="PackedScene" uid="uid://cbnbl3bd27l8d" path="res://resourses/ui/market_items/more_points.tscn" id="3_mh4u0"]
+[ext_resource type="PackedScene" uid="uid://04n8t2807ccr" path="res://resourses/ui/market_items/more_time.tscn" id="4_owcg4"]
+
+[node name="BuffPanel" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -572.0
+offset_bottom = -491.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="DifficultyPanel" parent="." instance=ExtResource("1_iqgi8")]
+layout_mode = 2
+upgrade_value = 100
+
+[node name="HpPanel" parent="." instance=ExtResource("2_hnwpf")]
+layout_mode = 2
+upgrade_value = 100
+
+[node name="PointsPanel" parent="." instance=ExtResource("3_mh4u0")]
+layout_mode = 2
+upgrade_value = 100
+
+[node name="TimePanel" parent="." instance=ExtResource("4_owcg4")]
+layout_mode = 2
+upgrade_value = 100

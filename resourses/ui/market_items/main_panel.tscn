@@ -1,0 +1,172 @@
+[gd_scene load_steps=16 format=3 uid="uid://bgoaldsyhaabh"]
+
+[ext_resource type="Script" uid="uid://bjvngw5jt6ueq" path="res://scripts/market_panel.gd" id="1_g25y5"]
+[ext_resource type="Texture2D" uid="uid://bdr8lokx2spx3" path="res://assets/ui/market/MenusBox_34x34.png" id="1_pn4l3"]
+[ext_resource type="Texture2D" uid="uid://dgi6xyxr1jqeu" path="res://assets/ui/market/ItemBox_24x24.png" id="2_ioquk"]
+[ext_resource type="FontFile" uid="uid://ilx8vgt1m1ng" path="res://assets/fonts/Jakob Bold.ttf" id="3_ioquk"]
+[ext_resource type="AudioStream" uid="uid://b7jcjg3rv0yxg" path="res://assets/sfx/pop_1.wav" id="5_omcma"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bn6p0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pn4l3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_omcma"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g25y5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r07mq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aurqt"]
+font = ExtResource("3_ioquk")
+font_size = 20
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p6mq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aurqt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gvgjw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4hew"]
+
+[node name="MainPanel" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1037.0
+offset_bottom = -494.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g25y5")
+
+[node name="TopSide" type="Panel" parent="."]
+custom_minimum_size = Vector2(115, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bn6p0")
+
+[node name="MainPanelSprite" type="Sprite2D" parent="TopSide"]
+position = Vector2(39.5, 39.5)
+scale = Vector2(2.382353, 2.382353)
+texture = ExtResource("1_pn4l3")
+
+[node name="BackGroundPanel" type="VBoxContainer" parent="TopSide/MainPanelSprite"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.58
+offset_top = -18.29
+offset_right = -16.999998
+offset_bottom = -13.290001
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="Panel" type="Panel" parent="TopSide/MainPanelSprite/BackGroundPanel"]
+custom_minimum_size = Vector2(5, 25)
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pn4l3")
+
+[node name="BackGroundPanelSprite" type="Sprite2D" parent="TopSide/MainPanelSprite/BackGroundPanel/Panel"]
+position = Vector2(16.999998, 13.851851)
+scale = Vector2(0.85699576, 0.7345679)
+texture = ExtResource("2_ioquk")
+
+[node name="ItemPanel" type="Panel" parent="TopSide/MainPanelSprite/BackGroundPanel/Panel/BackGroundPanelSprite"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.999999
+offset_top = -12.285712
+offset_right = -11.999999
+offset_bottom = -12.285712
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_omcma")
+
+[node name="ItemSprite" type="Sprite2D" parent="TopSide/MainPanelSprite/BackGroundPanel/Panel/BackGroundPanelSprite/ItemPanel"]
+position = Vector2(12.0816345, 12.000003)
+scale = Vector2(0.019183673, 0.019285712)
+
+[node name="LevelUpContainer" type="HBoxContainer" parent="TopSide/MainPanelSprite/BackGroundPanel"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="LevelUp1Panel" type="Panel" parent="TopSide/MainPanelSprite/BackGroundPanel/LevelUpContainer"]
+layout_mode = 2
+
+[node name="LevelUp1Sprite" type="Sprite2D" parent="TopSide/MainPanelSprite/BackGroundPanel/LevelUpContainer/LevelUp1Panel"]
+position = Vector2(9.654321, 2.6543198)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("2_ioquk")
+
+[node name="LevelUp2Panel" type="Panel" parent="TopSide/MainPanelSprite/BackGroundPanel/LevelUpContainer"]
+layout_mode = 2
+
+[node name="LevelUp2Sprite" type="Sprite2D" parent="TopSide/MainPanelSprite/BackGroundPanel/LevelUpContainer/LevelUp2Panel"]
+position = Vector2(4.209628, 2.5739508)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("2_ioquk")
+
+[node name="LevelUp3Panel" type="Panel" parent="TopSide/MainPanelSprite/BackGroundPanel/LevelUpContainer"]
+layout_mode = 2
+
+[node name="LevelUp3Sprite" type="Sprite2D" parent="TopSide/MainPanelSprite/BackGroundPanel/LevelUpContainer/LevelUp3Panel"]
+position = Vector2(-2.4938295, 2.6543198)
+scale = Vector2(0.22, 0.22)
+texture = ExtResource("2_ioquk")
+
+[node name="BottomSide" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_g25y5")
+
+[node name="PricePanel" type="Panel" parent="BottomSide"]
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 37.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r07mq")
+
+[node name="Price" type="Label" parent="BottomSide/PricePanel"]
+layout_mode = 0
+offset_top = 9.0
+offset_right = 50.0
+offset_bottom = 35.0
+text = "Price:"
+label_settings = SubResource("LabelSettings_aurqt")
+
+[node name="PriceNumb" type="Label" parent="BottomSide/PricePanel"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 9.0
+offset_right = 84.0
+offset_bottom = 30.0
+text = "000"
+label_settings = SubResource("LabelSettings_aurqt")
+
+[node name="Button" type="Button" parent="BottomSide"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 44.0
+offset_right = 63.0
+offset_bottom = 69.0
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.078431375, 0.80784315, 0.4509804, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_ioquk")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p6mq8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_aurqt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gvgjw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f4hew")
+text = "Buy"
+
+[node name="BtnSounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_omcma")
+
+[connection signal="pressed" from="BottomSide/Button" to="." method="_on_button_pressed"]

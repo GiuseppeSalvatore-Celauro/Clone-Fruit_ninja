@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbnbl3bd27l8d"]
+
+[ext_resource type="PackedScene" uid="uid://bgoaldsyhaabh" path="res://resourses/ui/market_items/main_panel.tscn" id="1_r7u8c"]
+[ext_resource type="Texture2D" uid="uid://dwlm6qj50rkhs" path="res://assets/ui/market_items/Coin-1.png.png" id="2_0prsw"]
+
+[node name="PointsPanel" instance=ExtResource("1_r7u8c")]
+
+[node name="ItemSprite" parent="TopSide/MainPanelSprite/BackGroundPanel/Panel/BackGroundPanelSprite/ItemPanel" index="0"]
+texture = ExtResource("2_0prsw")

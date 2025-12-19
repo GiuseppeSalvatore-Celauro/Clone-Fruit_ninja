@@ -127,6 +127,10 @@ zoom = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("4_3oufs")]
 
+[node name="MainMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_wscrc")
+pitch_scale = 0.73
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="PlayerPoints" parent="." instance=ExtResource("5_oduwx")]
@@ -147,15 +151,11 @@ offset_right = 620.44446
 offset_bottom = 16.0
 scale = Vector2(0.45, 0.45)
 
-[node name="MainMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_wscrc")
-pitch_scale = 0.73
-
 [node name="GameOver" parent="." instance=ExtResource("15_v2gmf")]
 visible = false
 z_index = 999
 scale = Vector2(0.5, 0.5)
 
 [connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="finished" from="MainMusic" to="." method="_on_main_music_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

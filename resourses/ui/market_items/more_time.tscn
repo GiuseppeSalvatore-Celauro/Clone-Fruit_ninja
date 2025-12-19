@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://04n8t2807ccr"]
+
+[ext_resource type="PackedScene" uid="uid://bgoaldsyhaabh" path="res://resourses/ui/market_items/main_panel.tscn" id="1_34gde"]
+[ext_resource type="Texture2D" uid="uid://btinlqcltahq3" path="res://assets/ui/market_items/Inverted hourglass1.png" id="2_mf48r"]
+
+[node name="TimePanel" instance=ExtResource("1_34gde")]
+
+[node name="ItemSprite" parent="TopSide/MainPanelSprite/BackGroundPanel/Panel/BackGroundPanelSprite/ItemPanel" index="0"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_mf48r")
+
+[node name="BottomSide" parent="." index="1"]
+custom_minimum_size = Vector2(0, 70)
+
+[node name="PricePanel" parent="BottomSide" index="0"]
+offset_left = -5.0
+offset_right = 83.0
+offset_bottom = 36.0
+
+[node name="PriceNumb" parent="BottomSide/PricePanel" index="1"]
+offset_left = 46.0
+offset_right = 87.0

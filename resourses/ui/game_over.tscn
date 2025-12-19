@@ -7,9 +7,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ppnft"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wxl0b"]
-font_size = 50
+font_size = 100
 font_color = Color(0.5137255, 0.003921569, 0.015686275, 1)
-outline_size = 25
+outline_size = 40
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bd0qp"]
@@ -57,9 +57,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.078431375, 0.80784315, 0.4509804, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 20
+theme_override_constants/outline_size = 25
 theme_override_fonts/font = ExtResource("1_novmc")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxEmpty_bd0qp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_aj8w3")
 text = "Back to menu
@@ -72,9 +72,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.078431375, 0.80784315, 0.4509804, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.078431375, 0.80784315, 0.4509804, 1)
-theme_override_constants/outline_size = 20
+theme_override_constants/outline_size = 25
 theme_override_fonts/font = ExtResource("1_novmc")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4ocpd")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ma5dk")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_das05")
@@ -88,9 +88,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/font_hover_color = Color(0.078431375, 0.80784315, 0.4509804, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.078431375, 0.80784315, 0.4509804, 1)
-theme_override_constants/outline_size = 20
+theme_override_constants/outline_size = 25
 theme_override_fonts/font = ExtResource("1_novmc")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0tmgg")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mvx2f")
 text = "Quit"
