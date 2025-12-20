@@ -18,6 +18,7 @@ var how_many_lvl:int
 const done_png: String = "res://assets/ui/market/comprato.png"
 var how_many_possibile_lvls: int
 var panel_name: String
+var first: bool = true
 
 func _ready() -> void:
 	price_nmb.text = str(upgrade_value)
@@ -30,7 +31,6 @@ func _ready() -> void:
 	how_many_lvl = save_manager.data.upgrades[panel_name]
 	
 	how_many_possibile_lvls = len(lvls)
-	
 	buff_settings_handler()
 
 func _process(delta: float) -> void:
