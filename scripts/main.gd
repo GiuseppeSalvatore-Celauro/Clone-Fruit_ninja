@@ -12,6 +12,7 @@ signal emit_particels_input
 @onready var main_music: AudioStreamPlayer2D = $MainMusic
 @onready var root: Node = $"."
 @onready var game_over: Panel = $GameOver
+@onready var game_timer: Panel = $GameTimer
 
 @export var fruit_scenes: Array[PackedScene]
 @export var fruit_particles: PackedScene
@@ -21,7 +22,7 @@ signal emit_particels_input
 @onready var min_range_value: int = 10
 var new_fruit: Fruit
 var is_game_over: bool = false
-
+var is_pause: bool = false
 func _ready():
 	main_music.play()
 	timer.start()
@@ -30,6 +31,7 @@ func _ready():
 		life_ui.visible = false
 	
 	player.connect("player_points", recive_player_points)
+	game_timer.connect("time_end", time_end_handler)
 
 func random() -> float:
 	var viewport_size: Vector2 = get_tree().root.get_visible_rect().size
@@ -79,10 +81,7 @@ func recive_fruit_dmg(dmg: int) ->void:
 	player_life -= dmg
 	
 	if player_life < 0:
-		is_game_over = true
-		stop_timer()
-		new_fruit.call_deferred("queue_free")
-		set_game_over_gui()
+		gameover_handler()
 		
 	emit_signal("emit_player_hp_to_ui",	player_life)
 
@@ -91,11 +90,12 @@ func _on_main_music_finished() -> void:
 		main_music.play()
 
 func recive_fruit_recived_hit(color: String, _position: Vector2)-> void:
-	if new_fruit: 
-		new_fruit = null
-		var new_fruit_particles: FruitParticles = fruit_particles.instantiate()
-		add_child(new_fruit_particles)
-		emit_signal("emit_particels_input", color, _position)
+	if not is_pause:
+		if new_fruit: 
+			new_fruit = null
+			var new_fruit_particles: FruitParticles = fruit_particles.instantiate()
+			add_child(new_fruit_particles)
+			emit_signal("emit_particels_input", color, _position)
 	
 func stop_timer()-> void:
 	if is_instance_valid(timer):
@@ -105,14 +105,28 @@ func get_player_points() -> int:
 	return player_points
 
 func set_game_over_gui() -> void:
+	hidden_ui()
 	music_handler()
-	points_ui.visible = false
-	life_ui.visible = false
 	game_over.visible = true
-	
+
 func music_handler() -> void:
 	main_music.stop()
 	main_music.stream = preload("res://assets/music/piano_defeated.wav")
 	main_music.volume_db = -5
 	main_music.pitch_scale = 1.5
 	main_music.play()
+
+func time_end_handler()->void:
+	gameover_handler()
+
+func gameover_handler()->void:
+	is_game_over = true
+	stop_timer()
+	new_fruit.call_deferred("queue_free")
+	set_game_over_gui()
+
+func hidden_ui()->void:
+	points_ui.visible = false
+	life_ui.visible = false
+	game_timer.visible = false
+	game_timer.timer.stop()

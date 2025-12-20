@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cxjj6e0i5ilqw"]
+[gd_scene load_steps=20 format=4 uid="uid://cxjj6e0i5ilqw"]
 
 [ext_resource type="Script" uid="uid://cg8f6sr3dgsb3" path="res://scripts/main.gd" id="1_72qrf"]
 [ext_resource type="Texture2D" uid="uid://c2jv6vqvwrt3f" path="res://assets/tile_sets/Free_32x32_tileset_wood.png" id="2_oduwx"]
@@ -14,7 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://cks7mljflhc4j" path="res://resourses/fruit_particles.tscn" id="8_hybxs"]
 [ext_resource type="Texture2D" uid="uid://cfeqr36o8ire3" path="res://assets/tile_sets/wood_tileset.png" id="9_mswub"]
 [ext_resource type="AudioStream" uid="uid://j7a55sooefvr" path="res://assets/music/uccellini prototipo.wav" id="12_wscrc"]
-[ext_resource type="PackedScene" uid="uid://bo8uef5cih6p" path="res://resourses/ui/game_over.tscn" id="15_v2gmf"]
+[ext_resource type="PackedScene" uid="uid://b8va7b2srstar" path="res://resourses/ui/game_over.tscn" id="15_v2gmf"]
+[ext_resource type="PackedScene" uid="uid://dlvcu7m65elt7" path="res://resourses/ui/game_timer.tscn" id="16_jcbur"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8uhc"]
 texture = ExtResource("2_oduwx")
@@ -153,8 +154,14 @@ scale = Vector2(0.45, 0.45)
 
 [node name="GameOver" parent="." instance=ExtResource("15_v2gmf")]
 visible = false
-z_index = 999
 scale = Vector2(0.5, 0.5)
+
+[node name="GameTimer" parent="." instance=ExtResource("16_jcbur")]
+offset_left = 229.0
+offset_top = 10.000001
+offset_right = 522.0
+offset_bottom = 109.0
+scale = Vector2(0.4, 0.4)
 
 [connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
 [connection signal="finished" from="MainMusic" to="." method="_on_main_music_finished"]

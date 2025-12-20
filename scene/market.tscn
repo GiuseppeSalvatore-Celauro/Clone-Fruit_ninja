@@ -206,5 +206,20 @@ offset_right = -348.0
 offset_bottom = -190.86386
 scale = Vector2(1.3, 1.3)
 
+[node name="Points2" type="Label" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 648.0
+offset_top = 184.0
+offset_right = 1160.0
+offset_bottom = 264.0
+pivot_offset = Vector2(20, 0)
+theme_override_colors/font_color = Color(0.078431375, 0.80784315, 0.4509804, 1)
+theme_override_fonts/font = ExtResource("4_ypw6d")
+text = "Clicca \"P\" per avere 10k punti"
+label_settings = SubResource("LabelSettings_ai4mp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="finished" from="BtnSounds" to="." method="_on_btn_sounds_finished"]

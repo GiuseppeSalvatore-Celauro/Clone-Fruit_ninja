@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlvcu7m65elt7"]
+
+[ext_resource type="Script" uid="uid://dhge0r2eabmxs" path="res://scripts/game_timer.gd" id="1_wfb4h"]
+[ext_resource type="FontFile" uid="uid://ilx8vgt1m1ng" path="res://assets/fonts/Jakob Bold.ttf" id="3_8ueas"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ks3p2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ybcsw"]
+font_size = 100
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GameTimer" type="Panel"]
+top_level = true
+offset_right = 296.0
+offset_bottom = 104.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ks3p2")
+script = ExtResource("1_wfb4h")
+
+[node name="TimeCounter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 178.0
+offset_bottom = 154.0
+theme_override_fonts/font = ExtResource("3_8ueas")
+theme_override_font_sizes/font_size = 20
+text = "00:00"
+label_settings = SubResource("LabelSettings_ybcsw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

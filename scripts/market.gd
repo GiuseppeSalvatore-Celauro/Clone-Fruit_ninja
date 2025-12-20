@@ -7,12 +7,20 @@ extends Control
 	$Control/PointsPanel,
 	$Control/TimePanel
 ]
-var is_going_back: bool = false
 
+var is_going_back: bool = false
+var is_reciving_scores: bool = false
 func _ready() -> void:
 	for control in market_controls:
 		control.connect("money_changed", total_points_handler)
 	nmb_points.text = str(int(save_manager.data.score))
+
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("P") and not is_reciving_scores:
+		is_reciving_scores = true
+		save_manager.data.score += 10000
+		save_manager.save_game()
+		total_points_handler()
 
 func _on_back_btn_pressed() -> void:
 	btn_sounds.play()
@@ -24,3 +32,4 @@ func _on_btn_sounds_finished() -> void:
 
 func total_points_handler()->void:
 	nmb_points.text = str(int(save_manager.data.score))
+	is_reciving_scores = false
